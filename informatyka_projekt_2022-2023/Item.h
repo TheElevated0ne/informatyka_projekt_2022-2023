@@ -10,7 +10,7 @@ private:
 	sf::Texture texture;
 	sf::Sprite sprite;
 public:
-	Item(std::string image);
+	Item(std::string imageUrl, std::map<std::string, sf::Texture>* textures);
 	sf::Sprite getSprite();
 };
 

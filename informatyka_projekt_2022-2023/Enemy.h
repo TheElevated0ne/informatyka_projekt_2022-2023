@@ -15,6 +15,6 @@ private:
 	sf::Sprite sprite;
 public:
 	Enemy();
-	Enemy(float speed, float shot_damage, float shot_reload, float shot_speed, float shot_range, std::string imageUrl);
+	Enemy(float speed, float shot_damage, float shot_reload, float shot_speed, float shot_range, std::string imageUrl, std::map<std::string, sf::Texture>* textures);
 	sf::Sprite getSprite();
 };
