@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 
+#include "Dungeon.h"
 #include "Bullet.h"
 #include "Player.h"
 #include "Enemy.h"
@@ -11,14 +12,16 @@ int main() {
 	sf::Clock zegar;
 	float delta = 5.f;
 	std::map<std::string, sf::Texture> tekstury;
-	Player gracz;
 	Enemy wrog;
 	Item hotdog("hotdog.png", &tekstury);
-	Room pokoj(&tekstury, &window);
+	Room pokoj(101, &tekstury, &window);
+	Player gracz(&pokoj, &tekstury);
 
 	sf::Texture bgTexture;
 	bgTexture.loadFromFile("Resources/Cave.png");
 	sf::Sprite background(bgTexture);
+
+	Dungeon lochy(2137, 0, &tekstury, &window, &gracz);
 
 	while (window.isOpen())
 	{
@@ -36,9 +39,10 @@ int main() {
 		
 		window.clear();
 		window.draw(background);
-		pokoj.drawRoom();
+		//pokoj.drawRoom();
+		lochy.drawRoom();
 		window.draw(hotdog.getSprite());
-		window.draw(gracz.getSprite());
+		gracz.drawPlayer();
 		window.draw(wrog.getSprite());
 		window.display();
 		delta = zegar.getElapsedTime().asMilliseconds();
